@@ -3,9 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {StoreModule} from "@ngrx/store";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {itemReducer} from "./store/items.reducer";
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {itemsReducer} from './store/items.reducer';
+import {Item} from './model/items';
+
+export interface AppState {
+  items: Item[];
+  auth: {token: string, role: string};
+}
 
 @NgModule({
   declarations: [
@@ -15,7 +21,7 @@ import {itemReducer} from "./store/items.reducer";
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      items: itemReducer,
+      items: itemsReducer,
       auth: () => ({
         token : 'abc1234',
         role: 'admin'
