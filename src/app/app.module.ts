@@ -7,6 +7,7 @@ import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {itemsReducer} from './store/items.reducer';
 import {Item} from './model/items';
+import {FormsModule} from '@angular/forms';
 
 export interface AppState {
   items: Item[];
@@ -20,6 +21,7 @@ export interface AppState {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     StoreModule.forRoot({
       items: itemsReducer,
       auth: () => ({
